@@ -1,6 +1,7 @@
 ﻿
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 {
+    //Validar(), ObterEmprestimos()
     public class Amigo
     {
         public string nome;

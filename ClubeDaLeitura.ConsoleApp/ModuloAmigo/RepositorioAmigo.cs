@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using ClubeDaLeitura.ConsoleApp.Compartilhados;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 {
-    internal class RepositorioAmigo
+    public class RepositorioAmigo : RepositorioBase
     {
     }
 }

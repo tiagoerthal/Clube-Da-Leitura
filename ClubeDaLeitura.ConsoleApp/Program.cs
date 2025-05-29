@@ -1,10 +1,12 @@
-﻿namespace ClubeDaLeitura.ConsoleApp
+﻿using ClubeDaLeitura.ConsoleApp.Compartilhados;
+
+namespace ClubeDaLeitura.ConsoleApp
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-      
+          
         }
         public static char ApresentarMenuPrincipal()
         {
