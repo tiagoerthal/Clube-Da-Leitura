@@ -1,10 +1,12 @@
 ﻿
+using ClubeDaLeitura.ConsoleApp.Compartilhados;
+
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 {
     //Inserir( ), Editar( ), Excluir( ),VisualizarTodos(),VisualizarEmprestimos()
-    public class TelaAmigo
+    public class TelaAmigo : TelaBase
     {
-        protected override Amigos ObterDados()
+        protected override Amigo ObterDados()
         {
             Console.Write("Digite o título do chamado: ");
             string titulo = Console.ReadLine();

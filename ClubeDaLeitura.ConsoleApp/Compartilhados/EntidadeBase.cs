@@ -2,7 +2,7 @@
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 {
-    public class EntidadeBase
+    public abstract class EntidadeBase
     {
         public int id;
 

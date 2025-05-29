@@ -1,7 +1,7 @@
 ﻿
 namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 {
-    public class TelaBase
+    public abstract class TelaBase
     {
         protected string nomeEntidade;
         protected RepositorioBase repositorio;
