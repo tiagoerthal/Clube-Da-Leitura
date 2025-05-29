@@ -6,30 +6,41 @@ namespace ClubeDaLeitura.ConsoleApp
     {
         static void Main(string[] args)
         {
-          
-        }
-        public static char ApresentarMenuPrincipal()
-        {
-            Console.Clear();
+            TelaPrincipal telaPrincipal = new TelaPrincipal();
 
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("|        Clube Da Leitura        |");
-            Console.WriteLine("----------------------------------");
+            while (true)
+            {
+                telaPrincipal.ApresentarMenuPrincipal();
 
-            Console.WriteLine();
+                TelaBase telaEscolhida = telaPrincipal.ObterTela();
 
-            Console.WriteLine("1 - Controle de Amigos");
-            Console.WriteLine("2 - Controle de Caixas");
-            Console.WriteLine("3 - Controle de Revistas");
-            Console.WriteLine("4 - Controle de Empréstimos");
-            Console.WriteLine("S - Sair");
+                if (telaEscolhida == null)
+                    break;
 
-            Console.WriteLine();
+                char opcaoEscolhida = telaEscolhida.ApresentarMenu();
 
-            Console.Write("Escolha uma das opções: ");
-            char opcaoEscolhida = Console.ReadLine()[0];
+                if (opcaoEscolhida == 'S')
+                    break;
 
-            return opcaoEscolhida;
+                switch (opcaoEscolhida)
+                {
+                    case '1':
+                        telaEscolhida.CadastrarRegistro();
+                        break;
+
+                    case '2':
+                        telaEscolhida.VisualizarRegistros(true);
+                        break;
+
+                    case '3':
+                        telaEscolhida.EditarRegistro();
+                        break;
+
+                    case '4':
+                        telaEscolhida.ExcluirRegistro();
+                        break;
+                }
+            }
         }
     }
 }
