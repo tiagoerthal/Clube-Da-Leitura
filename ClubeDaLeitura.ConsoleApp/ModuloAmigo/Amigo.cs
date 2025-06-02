@@ -3,7 +3,7 @@ using ClubeDaLeitura.ConsoleApp.Compartilhados;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 {
-    //Validar(), ObterEmprestimos()
+    //ObterEmprestimos()
     public class Amigo : EntidadeBase
     {
         public string nome;
@@ -19,13 +19,15 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 
         public override void AtualizarRegistro(EntidadeBase registroAtualizado)
         {
-            Amigo chamadoAtualizado = (Amigo)registroAtualizado;
+            Amigo amigoAtualizado = (Amigo)registroAtualizado;
 
-            this.nome = chamadoAtualizado.nome;
-            this.responsavel = chamadoAtualizado.responsavel;
-            this.telefone = chamadoAtualizado.telefone;
+            this.nome = amigoAtualizado.nome;
+            this.responsavel = amigoAtualizado.responsavel;
+            this.telefone = amigoAtualizado.telefone;
         }
 
+        //Não pode haver amigos com o mesmo nome e telefone.
+        // Não permitir excluir um amigo caso tenha empréstimos vinculados
         public override string Validar()
         {
             string erros = "";

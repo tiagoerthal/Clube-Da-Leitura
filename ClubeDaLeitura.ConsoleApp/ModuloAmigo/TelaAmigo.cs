@@ -3,29 +3,63 @@ using ClubeDaLeitura.ConsoleApp.Compartilhados;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 {
-    //Inserir( ), Editar( ), Excluir( ),VisualizarTodos(),VisualizarEmprestimos()
-    public class TelaAmigo : TelaBase
+    //VisualizarEmprestimos()
+    public  class TelaAmigo : TelaBase
     {
+        private RepositorioAmigo repositorioAmigo;
+
+        public TelaAmigo(RepositorioAmigo repositorioAmigo)
+        : base("Amigo", repositorioAmigo)
+        {
+            this.repositorioAmigo = repositorioAmigo;
+        }
+
+        public override void VisualizarRegistros(bool exibirCabecalho)
+        {
+            if (exibirCabecalho == true)
+                ExibirCabecalho();
+
+            Console.WriteLine("Visualização de Amigos");
+
+            Console.WriteLine();
+
+            Console.WriteLine(
+                "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
+                "Id", "Nome", "Nome do responsável", "Telefone"
+            );
+
+            EntidadeBase[] amigo = repositorioAmigo.SelecionarRegistros();
+
+            for (int i = 0; i < amigo.Length; i++)
+            {
+                Amigo A = (Amigo)amigo[i];
+
+                if (A == null)
+                    continue;
+
+                Console.WriteLine(
+                   "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
+                    A.id, A.nome, A.responsavel, A.telefone
+                );
+            }
+
+            Console.ReadLine();
+        }
+
         protected override Amigo ObterDados()
         {
-            Console.Write("Digite o título do chamado: ");
-            string titulo = Console.ReadLine();
+            Console.Write("Digite o nome do Amigo: ");
+            string nome = Console.ReadLine();
 
-            Console.Write("Digite a descrição do chamado: ");
-            string descricao = Console.ReadLine();
+            Console.Write("Digite o nome do responsável pelo Amigo: ");
+            string nomeResponsavel = Console.ReadLine();
 
-            DateTime dataAbertura = DateTime.Now;
+            Console.Write("Digite o telefone do Amigo: ");
+            string telefone = Console.ReadLine();
 
-            VisualizarEquipamentos();
+            Amigo amigo = new Amigo(nome, nomeResponsavel, telefone);
 
-            Console.Write("Digite o ID do equipamento que deseja selecionar: ");
-            int idEquipamento = Convert.ToInt32(Console.ReadLine());
-
-            Equipamento equipamentoSelecionado = (Equipamento)repositorioEquipamento.SelecionarRegistroPorId(idEquipamento);
-
-            Chamado chamado = new Chamado(titulo, descricao, dataAbertura, equipamentoSelecionado);
-
-            return chamado;
+            return amigo;
         }
     }
 }
