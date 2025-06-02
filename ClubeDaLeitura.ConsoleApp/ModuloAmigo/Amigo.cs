@@ -25,5 +25,30 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
             this.responsavel = chamadoAtualizado.responsavel;
             this.telefone = chamadoAtualizado.telefone;
         }
+
+        public override string Validar()
+        {
+            string erros = "";
+
+            if (string.IsNullOrWhiteSpace(nome))
+                erros += "O campo \"Nome\" é obrigatório.\n";
+
+            else if (nome.Length < 3)
+                erros += "O campo \"Nome\" precisa conter ao menos 3 caracteres.\n";
+
+            if (string.IsNullOrWhiteSpace(responsavel))
+                erros += "O campo \"Responsável\" é obrigatório.\n";
+
+            else if (responsavel.Length < 3)
+                erros += "O campo \"Responsável\" precisa conter ao menos 3 caracteres.\n";
+
+            if (string.IsNullOrWhiteSpace(telefone))
+                erros += "O campo \"Telefone\" é obrigatório!\n";
+
+            else if (telefone.Length < 9)
+                erros += "O campo \"Telefone\" deve conter no mínimo 9 caracteres!\n";
+
+            return erros;
+        }
     }
 }
