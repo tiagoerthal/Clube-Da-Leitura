@@ -2,7 +2,7 @@
 
 namespace ClubeDaLeitura.ConsoleApp
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
@@ -10,7 +10,7 @@ namespace ClubeDaLeitura.ConsoleApp
 
             while (true)
             {
-                telaPrincipal.ApresentarMenuPrincipal();
+                //telaPrincipal.ApresentarMenuPrincipal();
 
                 TelaBase telaEscolhida = telaPrincipal.ObterTela();
 

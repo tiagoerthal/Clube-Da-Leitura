@@ -1,7 +1,6 @@
 ﻿
 namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 {
-    //Inserir( ), Editar( ), Excluir( ),SelecionarTodos(), SelecionarPorId()
     public abstract class RepositorioBase
     {
         private EntidadeBase[] registros = new EntidadeBase[100];
