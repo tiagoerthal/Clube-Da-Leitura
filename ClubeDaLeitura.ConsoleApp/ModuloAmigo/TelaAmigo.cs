@@ -4,7 +4,7 @@ using ClubeDaLeitura.ConsoleApp.Compartilhados;
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 {
     //VisualizarEmprestimos()
-    public  class TelaAmigo : TelaBase
+    public class TelaAmigo : TelaBase
     {
         private RepositorioAmigo repositorioAmigo;
 
