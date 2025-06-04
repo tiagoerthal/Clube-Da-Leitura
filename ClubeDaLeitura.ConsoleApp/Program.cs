@@ -1,4 +1,5 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhados;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 namespace ClubeDaLeitura.ConsoleApp
 {
@@ -10,7 +11,7 @@ namespace ClubeDaLeitura.ConsoleApp
 
             while (true)
             {
-                //telaPrincipal.ApresentarMenuPrincipal();
+                telaPrincipal.ApresentarMenuPrincipal();
 
                 TelaBase telaEscolhida = telaPrincipal.ObterTela();
 
@@ -22,24 +23,49 @@ namespace ClubeDaLeitura.ConsoleApp
                 if (opcaoEscolhida == 'S')
                     break;
 
-                switch (opcaoEscolhida)
+                if (telaEscolhida is TelaEmprestimo)
                 {
-                    case '1':
-                        telaEscolhida.CadastrarRegistro();
-                        break;
+                    TelaEmprestimo telaEmprestimo = (TelaEmprestimo)telaEscolhida;
+                    switch (opcaoEscolhida)
+                    {
+                        case '1':
+                            telaEmprestimo.CadastrarRegistro();
+                            break;
 
-                    case '2':
-                        telaEscolhida.VisualizarRegistros(true);
-                        break;
+                        case '2':
+                            telaEmprestimo.VisualizarRegistros(true);
+                            break;
 
-                    case '3':
-                        telaEscolhida.EditarRegistro();
-                        break;
+                        case '3':
+                            telaEmprestimo.ExcluirRegistro();
+                            break;
 
-                    case '4':
-                        telaEscolhida.ExcluirRegistro();
-                        break;
+                        case '4':
+                            telaEmprestimo.CadastrarDevolucao();
+                            break;
+                    }
+
+
                 }
+
+                else switch (opcaoEscolhida)
+                    {
+                        case '1':
+                            telaEscolhida.CadastrarRegistro();
+                            break;
+
+                        case '2':
+                            telaEscolhida.VisualizarRegistros(true);
+                            break;
+
+                        case '3':
+                            telaEscolhida.EditarRegistro();
+                            break;
+
+                        case '4':
+                            telaEscolhida.ExcluirRegistro();
+                            break;
+                    }
             }
         }
     }

@@ -5,13 +5,10 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 {
     public class TelaCaixa : TelaBase
     {
-        private RepositorioCaixa repositorioCaixa;
-
-        public TelaCaixa(RepositorioCaixa repositorioCaixa)
-            : base("Caixa", repositorioCaixa)
+        public TelaCaixa(RepositorioCaixa repositorio) : base("Caixa", repositorio)
         {
-            this.repositorioCaixa = repositorioCaixa;
         }
+
         public override void VisualizarRegistros(bool exibirCabecalho)
         {
             if (exibirCabecalho == true)
@@ -26,7 +23,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
                 "Id", "Eiqueta", "Cor", "Dias de empréstimo"
             );
 
-            EntidadeBase[] caixa = repositorioCaixa.SelecionarRegistros();
+            EntidadeBase[] caixa = repositorio.SelecionarRegistros();
 
             for (int i = 0; i < caixa.Length; i++)
             {
