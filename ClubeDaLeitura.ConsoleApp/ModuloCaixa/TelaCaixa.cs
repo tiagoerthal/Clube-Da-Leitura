@@ -37,24 +37,29 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 
                 Console.WriteLine(
                    "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                    C.id, C.etiqueta, C.cor, C.diasEmprestimo
+                    C.id, C.Etiqueta, C.Cor, C.DiasEmprestimo
                 );
             }
 
             Console.ReadLine();
         }
-        protected override Caixa ObterDados()
+        protected override EntidadeBase ObterDados()
         {
-            Console.Write("Digite a etiqueta da Caixa: ");
+            Console.Write("Digite a etiqueta da caixa: ");
             string etiqueta = Console.ReadLine();
 
             Console.Write("Digite a cor da caixa: ");
             string cor = Console.ReadLine();
 
-            Console.Write("Digite o tempo do empréstimo: ");
-            int diasEmprestimo = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Dias de Empréstimo (opcional): ");
+            bool conseguiuConverter = int.TryParse(Console.ReadLine(), out int diasEmprestimo);
 
-            Caixa caixa = new Caixa(etiqueta, cor, diasEmprestimo);
+            Caixa caixa;
+
+            if (conseguiuConverter)
+                caixa = new Caixa(etiqueta, cor, diasEmprestimo);
+            else
+                caixa = new Caixa(etiqueta, cor);
 
             return caixa;
         }

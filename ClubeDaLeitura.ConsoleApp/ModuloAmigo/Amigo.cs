@@ -1,4 +1,5 @@
 ﻿
+using System.Text.RegularExpressions;
 using ClubeDaLeitura.ConsoleApp.Compartilhados;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
@@ -6,49 +7,41 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
     //ObterEmprestimos()
     public class Amigo : EntidadeBase
     {
-        public string nome;
-        public string responsavel;
-        public string telefone;
+        public string Nome { get; set; }
+        public string Responsavel { get; set; }
+        public string Telefone { get; set; }
 
         public Amigo(string nome,string responsavel,string telefone)
         {
-            this.nome = nome;
-            this.responsavel = responsavel;
-            this.telefone = telefone;
+            Nome = nome;
+            Responsavel = responsavel;
+            Telefone = telefone;
         }
 
         public override void AtualizarRegistro(EntidadeBase registroAtualizado)
         {
             Amigo amigoAtualizado = (Amigo)registroAtualizado;
 
-            this.nome = amigoAtualizado.nome;
-            this.responsavel = amigoAtualizado.responsavel;
-            this.telefone = amigoAtualizado.telefone;
+            this.Nome = amigoAtualizado.Nome;
+            this.Responsavel = amigoAtualizado.Responsavel;
+            this.Telefone = amigoAtualizado.Telefone;
         }
 
         //Não pode haver amigos com o mesmo nome e telefone.
         // Não permitir excluir um amigo caso tenha empréstimos vinculados
+
         public override string Validar()
         {
-            string erros = "";
+            string erros = string.Empty;
 
-            if (string.IsNullOrWhiteSpace(nome))
-                erros += "O campo \"Nome\" é obrigatório.\n";
+            if (Nome.Length < 3 || Nome.Length > 100)
+                erros += "O campo \"Nome\" deve conter entre 3 e 100 caracteres.";
 
-            else if (nome.Length < 3)
-                erros += "O campo \"Nome\" precisa conter ao menos 3 caracteres.\n";
+            if (Responsavel.Length < 3 || Responsavel.Length > 100)
+                erros += "O campo \"Nome do Responsável\" deve conter entre 3 e 100 caracteres.";
 
-            if (string.IsNullOrWhiteSpace(responsavel))
-                erros += "O campo \"Responsável\" é obrigatório.\n";
-
-            else if (responsavel.Length < 3)
-                erros += "O campo \"Responsável\" precisa conter ao menos 3 caracteres.\n";
-
-            if (string.IsNullOrWhiteSpace(telefone))
-                erros += "O campo \"Telefone\" é obrigatório!\n";
-
-            else if (telefone.Length < 9)
-                erros += "O campo \"Telefone\" deve conter no mínimo 9 caracteres!\n";
+            if (!Regex.IsMatch(Telefone, @"^\(?\d{2}\)?\s?(9\d{4}|\d{4})-?\d{4}$"))
+                erros += "O campo \"Telefone\" deve seguir o padrão (DDD) 90000-0000.";
 
             return erros;
         }
