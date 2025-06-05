@@ -28,7 +28,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
             RepositorioRevista = new RepositorioRevista();
             RepositorioEmprestimo = new RepositorioEmprestimo();
 
-            telaAmigo = new TelaAmigo(RepositorioAmigo);
+            telaAmigo = new TelaAmigo(RepositorioAmigo, RepositorioEmprestimo);
             telaCaixa = new TelaCaixa(RepositorioCaixa);
             telaRevista = new TelaRevista(RepositorioRevista, RepositorioCaixa);
             telaEmprestimo = new TelaEmprestimo(RepositorioEmprestimo, RepositorioAmigo, RepositorioRevista);
@@ -54,7 +54,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
             Console.WriteLine();
 
             Console.Write("Escolha uma das opções: ");
-            char opcaoEscolhida = Console.ReadLine()[0];
+            opcaoEscolhida = Console.ReadLine()[0];
         }
         public TelaBase ObterTela()
         {

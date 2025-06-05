@@ -1,4 +1,6 @@
 ﻿
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
+
 namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 {
     public abstract class TelaBase
@@ -87,7 +89,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
             Console.ReadLine();
         }
 
-        public void ExcluirRegistro()
+        public virtual void ExcluirRegistro()
         {
             ExibirCabecalho();
 

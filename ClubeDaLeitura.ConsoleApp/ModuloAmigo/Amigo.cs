@@ -45,12 +45,5 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 
             return erros;
         }
-       // public void ExcluirAmigo(Amigo amigo)
-        //{
-          //  if (RepositorioEmprestimo.ExistemEmprestimosVinculados(amigo.id))
-            //    throw new InvalidOperationException("Não é possível excluir um amigo com empréstimos vinculados.");
-
-            //RepositorioBase.Excluir(amigo);
-        //}
     }
 }

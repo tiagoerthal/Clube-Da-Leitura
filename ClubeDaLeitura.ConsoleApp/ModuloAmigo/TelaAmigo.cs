@@ -1,17 +1,24 @@
 ﻿
 using System;
 using ClubeDaLeitura.ConsoleApp.Compartilhados;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 {
     //VisualizarEmprestimos()
     public class TelaAmigo : TelaBase
     {
+        private RepositorioEmprestimo repositorioEmprestimo;
 
-        public TelaAmigo(RepositorioAmigo repositorio) : base("Amigo", repositorio)
+        //public TelaAmigo(RepositorioAmigo repositorio) : base("Amigo", repositorio)
+        //{
+        //    this.repositorioEmprestimo = repositorioEmprestimo;
+        //}
+        public TelaAmigo(RepositorioAmigo repositorio, RepositorioEmprestimo repositorioEmprestimo)
+             :   base("Amigo", repositorio)
         {
+            this.repositorioEmprestimo = repositorioEmprestimo;
         }
-
         public override void CadastrarRegistro()
         {
             ExibirCabecalho();
@@ -140,6 +147,46 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
             Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
             Console.ReadLine();
         }
+        public override void ExcluirRegistro()
+        {
+            ExibirCabecalho();
+
+            Console.WriteLine($"Exclusão de {nomeEntidade}");
+            Console.WriteLine();
+
+             VisualizarRegistros(false);
+
+            Console.Write("\nDigite o id do amigo que deseja excluir: ");
+            int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+            // Verificar se há empréstimos vinculados
+            bool temEmprestimos = repositorioEmprestimo.ExistemEmprestimosDoAmigo(idSelecionado);
+
+            if (temEmprestimos)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode ser excluído.");
+                Console.ResetColor();
+                Console.ReadLine();
+                return;
+            }
+
+            bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
+
+            if (conseguiuExcluir)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nErro ao tentar excluir o {nomeEntidade}.");
+            }
+
+            Console.ResetColor();
+            Console.ReadLine();
+        }
 
         public override void VisualizarRegistros(bool exibirCabecalho)
         {
@@ -173,7 +220,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
             }
 
             Console.ReadLine();
-        }
+        }      
 
         protected override Amigo ObterDados()
         {
