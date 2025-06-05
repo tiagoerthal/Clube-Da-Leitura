@@ -31,8 +31,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
             NumeroDeEdicao = revistaAtualizada.NumeroDeEdicao;
             AnoDePublicacao = revistaAtualizada.AnoDePublicacao;
         }
-        //Não pode haver revistas com mesmo título e edição
-        //Status possíveis: Disponível / Emprestada / Reservada
+
         public override string Validar()
         {
             string erros = "";

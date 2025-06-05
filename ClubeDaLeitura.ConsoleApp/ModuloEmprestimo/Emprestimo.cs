@@ -19,7 +19,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             DataEmprestimo = dataEmprestimo;
             DataDevolucao = dataEmprestimo.AddDays(revista.Caixa.DiasEmprestimo);
 
-
             if (dataEmprestimo > DateTime.Now)
                 revista.Status = "Reservada";
             else
@@ -28,7 +27,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
         public override string Validar()
         {
             string erros = "";
-
 
             if (Amigo == null)
                 erros += "Amigo está vazio";
@@ -43,7 +41,5 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
         {
             return;
         }
-
-
     }
 }

@@ -1,6 +1,7 @@
 ﻿
 using System.Text.RegularExpressions;
 using ClubeDaLeitura.ConsoleApp.Compartilhados;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 {
@@ -27,7 +28,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
             this.Telefone = amigoAtualizado.Telefone;
         }
 
-        //Não pode haver amigos com o mesmo nome e telefone.
         // Não permitir excluir um amigo caso tenha empréstimos vinculados
 
         public override string Validar()
@@ -45,5 +45,12 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 
             return erros;
         }
+       // public void ExcluirAmigo(Amigo amigo)
+        //{
+          //  if (RepositorioEmprestimo.ExistemEmprestimosVinculados(amigo.id))
+            //    throw new InvalidOperationException("Não é possível excluir um amigo com empréstimos vinculados.");
+
+            //RepositorioBase.Excluir(amigo);
+        //}
     }
 }

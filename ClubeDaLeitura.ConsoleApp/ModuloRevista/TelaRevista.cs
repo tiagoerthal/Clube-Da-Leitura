@@ -1,6 +1,8 @@
 ﻿
 
+using System;
 using ClubeDaLeitura.ConsoleApp.Compartilhados;
+using ClubeDaLeitura.ConsoleApp.ModuloAmigos;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
@@ -14,6 +16,136 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
         {
             this.repositorioCaixa = repositorioCaixa;
         }
+        public override void CadastrarRegistro()
+        {
+            ExibirCabecalho(); 
+
+            Console.WriteLine($"Cadastro de {nomeEntidade}");
+
+            Console.WriteLine();
+
+            Revista novoRegistro = (Revista)ObterDados();
+
+            string erros = novoRegistro.Validar();
+
+            if (erros.Length > 0)
+            {
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(erros);
+                Console.ResetColor();
+
+                Console.Write("\nDigite ENTER para continuar...");
+                Console.ReadLine();
+
+                CadastrarRegistro();
+
+                return;
+            }
+
+            EntidadeBase[] registros = repositorio.SelecionarRegistros();
+
+            for (int i = 0; i < registros.Length; i++)
+            {
+                Revista revistaRegistrado = (Revista)registros[i];
+
+                if (revistaRegistrado == null)
+                    continue;
+
+                if (revistaRegistrado.Titulo == novoRegistro.Titulo || revistaRegistrado.NumeroDeEdicao == novoRegistro.NumeroDeEdicao)
+                {
+                    Console.WriteLine();
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Uma revista com este Título ou Edição já foram cadastrados!");
+                    Console.ResetColor();
+
+                    Console.Write("\nDigite ENTER para continuar...");
+                    Console.ReadLine();
+
+                    CadastrarRegistro();
+                    return;
+                }
+            }
+
+            repositorio.CadastrarRegistro(novoRegistro);
+
+            Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+            Console.ReadLine();
+        }
+
+        public override void EditarRegistro()
+        {
+            ExibirCabecalho();
+
+            Console.WriteLine($"Edição de {nomeEntidade}");
+
+            Console.WriteLine();
+
+            VisualizarRegistros(false);
+
+            Console.Write("Digite o id do registro que deseja selecionar: ");
+            int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+
+            Revista registroAtualizado = (Revista)ObterDados();
+
+            string erros = registroAtualizado.Validar();
+
+            if (erros.Length > 0)
+            {
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(erros);
+                Console.ResetColor();
+
+                Console.Write("\nDigite ENTER para continuar...");
+                Console.ReadLine();
+
+                EditarRegistro();
+
+                return;
+            }
+
+            EntidadeBase[] registros = repositorio.SelecionarRegistros();
+
+            for (int i = 0; i < registros.Length; i++)
+            {
+                Revista revistaRegistrado = (Revista)registros[i];
+
+                if (revistaRegistrado == null)
+                    continue;
+
+                if (
+                    revistaRegistrado.id != idSelecionado &&
+                    (revistaRegistrado.Titulo == registroAtualizado.Titulo ||
+                    revistaRegistrado.NumeroDeEdicao == registroAtualizado.NumeroDeEdicao)
+                )
+                {
+                    Console.WriteLine();
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Uma revista com este Título ou Edição já foram cadastrados!");
+                    Console.ResetColor();
+
+                    Console.Write("\nDigite ENTER para continuar...");
+                    Console.ReadLine();
+
+                    EditarRegistro();
+
+                    return;
+                }
+            }
+
+            repositorio.EditarRegistro(idSelecionado, registroAtualizado);
+
+            Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
+            Console.ReadLine();
+        }
+
         public override void VisualizarRegistros(bool exibirCabecalho)
         {
             if (exibirCabecalho == true)

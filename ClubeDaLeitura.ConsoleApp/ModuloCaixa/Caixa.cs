@@ -5,7 +5,6 @@ using ClubeDaLeitura.ConsoleApp.Compartilhados;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 {
-     //AdicionarRevista(),RemoverRevista()
     public class Caixa : EntidadeBase
     {
         public string Cor {  get; set; }
@@ -34,9 +33,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
             this.DiasEmprestimo = caixaAtualizada.DiasEmprestimo;
         }
 
-        //Não pode haver etiquetas duplicadas
         //Não permitir excluir uma caixa caso tenha revistas vinculadas
-        //Cada caixa define o prazo máximo para empréstimo de suas revistas
         public override string Validar()
         {
             string erros = string.Empty;

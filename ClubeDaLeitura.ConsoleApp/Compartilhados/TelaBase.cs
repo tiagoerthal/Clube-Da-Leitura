@@ -12,7 +12,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
             this.repositorio = repositorio;
         }
 
-        public char ApresentarMenu()
+        public virtual char ApresentarMenu()
         {
             ExibirCabecalho();
 
@@ -30,7 +30,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
             return opcaoEscolhida;
         }
 
-        public void CadastrarRegistro()
+        public virtual void CadastrarRegistro()
         {
             ExibirCabecalho();
 
@@ -64,7 +64,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
             Console.ReadLine();
         }
 
-        public void EditarRegistro()
+        public virtual void EditarRegistro()
         {
             ExibirCabecalho();
 
