@@ -4,45 +4,45 @@
 ![](https://imgur.com/a/jFovSoN.gif)
 
 ##  Funcionalidades
-### Módulo de Amigos
-- **Cadastro:** Adição de novos amigos com validação para nome, responsável e telefone.
+### MÃ³dulo de Amigos
+- **Cadastro:** AdiÃ§Ã£o de novos amigos com validaÃ§Ã£o para nome, responsÃ¡vel e telefone.
 
-- **Edição:** Alteração de dados dos amigos cadastrados.
+- **EdiÃ§Ã£o:** AlteraÃ§Ã£o de dados dos amigos cadastrados.
 
-- **Exclusão:** Remoção de amigos (caso não possuam empréstimos ativos).
+- **ExclusÃ£o:** RemoÃ§Ã£o de amigos (caso nÃ£o possuam emprÃ©stimos ativos).
 
-- **Visualização:** Listagem de amigos e seus respectivos empréstimos.
-
-
-
-### Módulo de Caixas
-- **Cadastro:** Criação de novas caixas com etiqueta, cor e dias de empréstimo.
-
-- **Edição:** Modificação de informações das caixas existentes.
-
-- **Exclusão:** Remoção de caixas (caso não possuam revistas vinculadas).
-
-- **Visualização:** Exibição de todas as caixas cadastradas.
+- **VisualizaÃ§Ã£o:** Listagem de amigos e seus respectivos emprÃ©stimos.
 
 
 
+### MÃ³dulo de Caixas
+- **Cadastro:** CriaÃ§Ã£o de novas caixas com etiqueta, cor e dias de emprÃ©stimo.
 
-### Módulo de Revistas
-- **Cadastro:** Adição de revistas com título, edição, ano de publicação e caixa associada.
+- **EdiÃ§Ã£o:** ModificaÃ§Ã£o de informaÃ§Ãµes das caixas existentes.
 
-- **Edição:** Alteração de dados das revistas cadastradas.
+- **ExclusÃ£o:** RemoÃ§Ã£o de caixas (caso nÃ£o possuam revistas vinculadas).
 
-- **Exclusão:** Remoção de revistas (caso não possuam empréstimos ativos).
-
-- **Visualização:** Listagem de revistas com status atual (Disponível/Emprestada/Reservada).
+- **VisualizaÃ§Ã£o:** ExibiÃ§Ã£o de todas as caixas cadastradas.
 
 
-### Módulo de Empréstimos
-- **Registro:** Cadastro de novos empréstimos com amigo, revista, data de empréstimo e data de devolução.
 
-- **Devolução:** Registro de devoluções de revistas emprestadas.
 
-- **Visualização:** Exibição de empréstimos abertos e fechados.
+### MÃ³dulo de Revistas
+- **Cadastro:** AdiÃ§Ã£o de revistas com tÃ­tulo, ediÃ§Ã£o, ano de publicaÃ§Ã£o e caixa associada.
+
+- **EdiÃ§Ã£o:** AlteraÃ§Ã£o de dados das revistas cadastradas.
+
+- **ExclusÃ£o:** RemoÃ§Ã£o de revistas (caso nÃ£o possuam emprÃ©stimos ativos).
+
+- **VisualizaÃ§Ã£o:** Listagem de revistas com status atual (DisponÃ­vel/Emprestada/Reservada).
+
+
+### MÃ³dulo de EmprÃ©stimos
+- **Registro:** Cadastro de novos emprÃ©stimos com amigo, revista, data de emprÃ©stimo e data de devoluÃ§Ã£o.
+
+- **DevoluÃ§Ã£o:** Registro de devoluÃ§Ãµes de revistas emprestadas.
+
+- **VisualizaÃ§Ã£o:** ExibiÃ§Ã£o de emprÃ©stimos abertos e fechados.
 
 ## Tecnologias
 
