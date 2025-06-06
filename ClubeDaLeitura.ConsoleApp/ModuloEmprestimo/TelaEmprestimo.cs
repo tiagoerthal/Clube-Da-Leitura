@@ -139,17 +139,21 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
             emprestimoSelecionado.Revista.Status = "Disponível";
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Devolução realizada com sucesso!");
+            Console.ResetColor();
             Console.ReadLine();
 
         }
         public override void CadastrarRegistro()
         {
             Console.Clear(); 
+
             ExibirCabecalho();
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
+
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Cadastro de {nomeEntidade}");
-            Console.ResetColor();
+            Console.WriteLine("------------------------------------------");
 
             Console.WriteLine();
 
@@ -191,9 +195,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
             Console.ResetColor();
             Console.Write("------------------------------------------");
-            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\nDigite ENTER para continuar...");
-            Console.ResetColor();
             Console.Write("------------------------------------------");
             Console.ReadLine();
         }
@@ -204,14 +206,17 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Console.Write("Digite o id do amigo: ");
             int IdAmigo = Convert.ToInt32(Console.ReadLine());
             Amigo amigoSelecionado = (Amigo)repositorioAmigo.SelecionarRegistroPorId(IdAmigo);
+            Console.WriteLine("------------------------------------------");
 
             VisualizarRevistas();
             Console.Write("Digite o id da revista: ");
             int IdRevista = Convert.ToInt32(Console.ReadLine());
             Revista revistaSelecionado = (Revista)repositorioRevista.SelecionarRegistroPorId(IdRevista);
+            Console.WriteLine("------------------------------------------");
 
-            Console.WriteLine("Digite a data da reserva");
+            Console.Write("Digite a data da reserva");
             DateTime dataEmprestimo = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("------------------------------------------");
 
             Emprestimo emprestimo = new Emprestimo(amigoSelecionado, revistaSelecionado, dataEmprestimo);
 

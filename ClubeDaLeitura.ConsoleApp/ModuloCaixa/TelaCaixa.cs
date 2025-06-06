@@ -19,8 +19,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
         public override void CadastrarRegistro()
         {
             ExibirCabecalho();
-
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Cadastro de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
 
             Console.WriteLine();
 
@@ -71,15 +72,23 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 
             repositorio.CadastrarRegistro(novoRegistro);
 
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
             Console.ReadLine();
         }
 
         public override void EditarRegistro()
         {
-            ExibirCabecalho(); 
-
+            ExibirCabecalho();
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Edição de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
 
             Console.WriteLine();
 
@@ -141,14 +150,23 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 
             repositorio.EditarRegistro(idSelecionado, registroAtualizado);
 
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
             Console.ReadLine();
         }
         public override void ExcluirRegistro()
         {
             ExibirCabecalho();
-
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Exclusão de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
+
             Console.WriteLine();
 
             VisualizarRegistros(false);
@@ -219,12 +237,15 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
         {
             Console.Write("Digite a etiqueta da caixa: ");
             string etiqueta = Console.ReadLine();
+            Console.WriteLine("------------------------------------------");
 
             Console.Write("Digite a cor da caixa: ");
             string cor = Console.ReadLine();
+            Console.WriteLine("------------------------------------------");
 
             Console.Write("Dias de Empréstimo (opcional): ");
             bool conseguiuConverter = int.TryParse(Console.ReadLine(), out int diasEmprestimo);
+            Console.WriteLine("------------------------------------------");
 
             Caixa caixa;
 

@@ -18,7 +18,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
         {
             ExibirCabecalho();
 
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Cadastro de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
 
             Console.WriteLine();
 
@@ -69,14 +71,22 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 
             repositorio.CadastrarRegistro(novoRegistro);
 
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
             Console.ReadLine();
         }
         public override void EditarRegistro()
         {
-            ExibirCabecalho(); 
-
+            ExibirCabecalho();
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Edição de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
 
             Console.WriteLine();
 
@@ -139,14 +149,23 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 
             repositorio.EditarRegistro(idSelecionado, registroAtualizado);
 
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
             Console.ReadLine();
         }
         public override void ExcluirRegistro()
         {
             ExibirCabecalho();
-
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Exclusão de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
+
             Console.WriteLine();
 
              VisualizarRegistros(false);
@@ -222,12 +241,15 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 
             Console.Write("Digite o nome do Amigo: ");
             string nome = Console.ReadLine();
+            Console.WriteLine("------------------------------------------");
 
             Console.Write("Digite o nome do responsável pelo Amigo: ");
             string nomeResponsavel = Console.ReadLine();
+            Console.WriteLine("------------------------------------------");
 
             Console.Write("Digite o telefone do Amigo: ");
             string telefone = Console.ReadLine();
+            Console.WriteLine("------------------------------------------");
 
             Amigo amigo = new Amigo(nome, nomeResponsavel, telefone);
 

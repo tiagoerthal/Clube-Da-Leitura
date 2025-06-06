@@ -18,9 +18,10 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
         }
         public override void CadastrarRegistro()
         {
-            ExibirCabecalho(); 
-
+            ExibirCabecalho();
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Cadastro de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
 
             Console.WriteLine();
 
@@ -71,15 +72,23 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
 
             repositorio.CadastrarRegistro(novoRegistro);
 
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
             Console.ReadLine();
         }
 
         public override void EditarRegistro()
         {
             ExibirCabecalho();
-
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Edição de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
 
             Console.WriteLine();
 
@@ -142,7 +151,14 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
 
             repositorio.EditarRegistro(idSelecionado, registroAtualizado);
 
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
             Console.ReadLine();
         }
 
@@ -212,17 +228,21 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
 
             Console.Write("Digite o título: ");
             string titulo = Console.ReadLine();
+            Console.WriteLine("------------------------------------------");
 
             Console.Write("Digite o numero da Edição: ");
             int numeroDeEdicao = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("------------------------------------------");
 
             Console.Write("Digite o ano de publicação: ");
             DateTime anoDePublicao = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("------------------------------------------");
 
             VisualizarCaixas();
 
             Console.Write("Digite o id da Caixa: ");
             int idCaixa = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("------------------------------------------");
 
             Caixa CaixaSelecionado = (Caixa)repositorioCaixa.SelecionarRegistroPorId(idCaixa);
 

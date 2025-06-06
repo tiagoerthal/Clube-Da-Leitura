@@ -28,8 +28,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
             this.Telefone = amigoAtualizado.Telefone;
         }
 
-        // Não permitir excluir um amigo caso tenha empréstimos vinculados
-
         public override string Validar()
         {
             string erros = string.Empty;

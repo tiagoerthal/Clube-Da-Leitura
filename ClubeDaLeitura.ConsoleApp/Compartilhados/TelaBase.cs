@@ -16,6 +16,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 
         public virtual char ApresentarMenu()
         {
+            Console.Clear();
             ExibirCabecalho();
 
             Console.WriteLine($"1 - Cadastro de {nomeEntidade}");
@@ -34,6 +35,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 
         public virtual void CadastrarRegistro()
         {
+            Console.Clear();
             ExibirCabecalho();
 
             Console.WriteLine($"Cadastro de {nomeEntidade}");
@@ -62,7 +64,14 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 
             repositorio.CadastrarRegistro(novoRegistro);
 
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
             Console.ReadLine();
         }
 
@@ -85,7 +94,14 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 
             repositorio.EditarRegistro(idSelecionado, RegistroAtualizado);
 
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
             Console.ReadLine();
         }
 
@@ -106,7 +122,14 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 
             repositorio.ExcluirRegistro(idSelecionado);
 
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
             Console.ReadLine();
         }
 
@@ -115,7 +138,10 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
         protected void ExibirCabecalho()
         {
             Console.Clear();
-            Console.WriteLine($"Gestão de {nomeEntidade}s");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"             Gestão de {nomeEntidade}s");
+            Console.WriteLine("------------------------------------------");
+
             Console.WriteLine();
         }
 
