@@ -9,11 +9,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
     public class TelaAmigo : TelaBase
     {
         private RepositorioEmprestimo repositorioEmprestimo;
-
-        //public TelaAmigo(RepositorioAmigo repositorio) : base("Amigo", repositorio)
-        //{
-        //    this.repositorioEmprestimo = repositorioEmprestimo;
-        //}
         public TelaAmigo(RepositorioAmigo repositorio, RepositorioEmprestimo repositorioEmprestimo)
              :   base("Amigo", repositorio)
         {
@@ -159,8 +154,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
             Console.Write("\nDigite o id do amigo que deseja excluir: ");
             int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
-            // Verificar se há empréstimos vinculados
-            bool temEmprestimos = repositorioEmprestimo.ExistemEmprestimosDoAmigo(idSelecionado);
+            bool temEmprestimos = repositorioEmprestimo.ExisteEmprestimosVinculadas(idSelecionado);
 
             if (temEmprestimos)
             {

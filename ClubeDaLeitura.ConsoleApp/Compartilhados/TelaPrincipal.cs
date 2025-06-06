@@ -29,7 +29,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
             RepositorioEmprestimo = new RepositorioEmprestimo();
 
             telaAmigo = new TelaAmigo(RepositorioAmigo, RepositorioEmprestimo);
-            telaCaixa = new TelaCaixa(RepositorioCaixa);
+            telaCaixa = new TelaCaixa(RepositorioCaixa, RepositorioRevista);
             telaRevista = new TelaRevista(RepositorioRevista, RepositorioCaixa);
             telaEmprestimo = new TelaEmprestimo(RepositorioEmprestimo, RepositorioAmigo, RepositorioRevista);
         }

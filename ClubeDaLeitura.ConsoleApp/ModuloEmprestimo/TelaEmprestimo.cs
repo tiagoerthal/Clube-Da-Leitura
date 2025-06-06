@@ -1,4 +1,5 @@
 ﻿
+using System;
 using ClubeDaLeitura.ConsoleApp.Compartilhados;
 using ClubeDaLeitura.ConsoleApp.ModuloAmigos;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
@@ -142,6 +143,61 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Console.ReadLine();
 
         }
+        public override void CadastrarRegistro()
+        {
+            Console.Clear(); 
+            ExibirCabecalho();
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine($"Cadastro de {nomeEntidade}");
+            Console.ResetColor();
+
+            Console.WriteLine();
+
+            Emprestimo novoRegistro = ObterDados();
+
+            string erros = novoRegistro.Validar();
+
+            if (erros.Length > 0)
+            {
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(erros);
+                Console.ResetColor();
+
+                Console.Write("\nDigite ENTER para continuar...");
+                Console.ReadLine();
+
+                CadastrarRegistro();
+
+                return;
+            }
+
+            bool temEmprestimos = repositorioEmprestimo.ExisteEmprestimosVinculadas(novoRegistro.Amigo.id);
+
+            if (temEmprestimos)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode adquirir outro.");
+                Console.ResetColor();
+                Console.ReadLine();
+                return;
+            }
+
+            repositorio.CadastrarRegistro(novoRegistro);
+            Console.Clear();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.ResetColor();
+            Console.Write("------------------------------------------");
+            Console.ReadLine();
+        }
+
         protected override Emprestimo ObterDados()
         {
             VisualizarAmigo();

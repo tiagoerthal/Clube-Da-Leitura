@@ -1,6 +1,7 @@
 ﻿
 using ClubeDaLeitura.ConsoleApp.ModuloAmigos;
 using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
+using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 {
@@ -66,18 +67,5 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 
             return null;
         }
-        public bool ExistemEmprestimosDoAmigo(int idAmigo)
-        {
-            EntidadeBase[] registros = SelecionarRegistros();
-
-            foreach (EntidadeBase registro in registros)
-            {
-                if (registro is Emprestimo emprestimo && emprestimo.Amigo != null && emprestimo.Amigo.id == idAmigo)
-                    return true;
-            }
-
-            return false;
-        }
-
     }
 }

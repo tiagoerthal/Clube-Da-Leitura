@@ -2,13 +2,18 @@
 using System;
 using ClubeDaLeitura.ConsoleApp.Compartilhados;
 using ClubeDaLeitura.ConsoleApp.ModuloAmigos;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
+using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 {
     public class TelaCaixa : TelaBase
     {
-        public TelaCaixa(RepositorioCaixa repositorio) : base("Caixa", repositorio)
+        private RepositorioRevista repositorioRevista;
+        
+        public TelaCaixa(RepositorioCaixa repositorio,RepositorioRevista repositorioRevista) : base("Caixa", repositorio)
         {
+            this.repositorioRevista = repositorioRevista;
         }
 
         public override void CadastrarRegistro()
@@ -137,6 +142,45 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
             repositorio.EditarRegistro(idSelecionado, registroAtualizado);
 
             Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
+            Console.ReadLine();
+        }
+        public override void ExcluirRegistro()
+        {
+            ExibirCabecalho();
+
+            Console.WriteLine($"Exclusão de {nomeEntidade}");
+            Console.WriteLine();
+
+            VisualizarRegistros(false);
+
+            Console.Write("\nDigite o id da caixa que deseja excluir: ");
+            int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+            bool temVinculo = repositorioRevista.ExistemRevistasVinculadas(idSelecionado);
+
+            if (temVinculo)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nEsta Revista possui vinculos e não pode ser excluído.");
+                Console.ResetColor();
+                Console.ReadLine();
+                return;
+            }
+
+            bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
+
+            if (conseguiuExcluir)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nErro ao tentar excluir o {nomeEntidade}.");
+            }
+
+            Console.ResetColor();
             Console.ReadLine();
         }
 
