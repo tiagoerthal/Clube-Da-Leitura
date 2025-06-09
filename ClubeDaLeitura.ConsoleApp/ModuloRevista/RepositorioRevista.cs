@@ -6,17 +6,39 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
 {
     public class RepositorioRevista : RepositorioBase
     {
-        public bool ExistemRevistasVinculadas(int idRevista)
+        public Revista[] SelecionarRevistaDisponiveis()
         {
-            EntidadeBase[] registros = SelecionarRegistros(); 
+            int contadorRevistasDisponiveis = 0;
 
-            foreach (EntidadeBase registro in registros)
+            for (int i = 0; i < registros.Length; i++)
             {
-                if (registro is Revista revista && revista.Caixa != null && revista.Caixa.id == idRevista)
-                    return true;
+                Revista revistaAtual = (Revista)registros[i];
+
+                if (revistaAtual == null)
+                    continue;
+
+                if (revistaAtual.Status == "Disponível")
+                    contadorRevistasDisponiveis++;
             }
 
-            return false;
+            Revista[] revistasDisponiveis = new Revista[contadorRevistasDisponiveis];
+
+            int contadorAuxiliar = 0;
+
+            for (int i = 0; i < registros.Length; i++)
+            {
+                Revista revistaAtual = (Revista)registros[i];
+
+                if (revistaAtual == null)
+                    continue;
+
+                if (revistaAtual.Status == "Disponível")
+                {
+                    revistasDisponiveis[contadorAuxiliar++] = (Revista)registros[i];
+                }
+            }
+
+            return revistasDisponiveis;
         }
     }
 }

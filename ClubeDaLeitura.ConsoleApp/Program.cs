@@ -20,7 +20,7 @@ namespace ClubeDaLeitura.ConsoleApp
 
                 char opcaoEscolhida = telaEscolhida.ApresentarMenu();
 
-                if (opcaoEscolhida == 'S')
+                if (opcaoEscolhida == 'S' || opcaoEscolhida == 's')
                     break;
 
                 if (telaEscolhida is TelaEmprestimo)
@@ -29,7 +29,7 @@ namespace ClubeDaLeitura.ConsoleApp
                     switch (opcaoEscolhida)
                     {
                         case '1':
-                            telaEmprestimo.CadastrarRegistro();
+                            telaEmprestimo.CadastrarEmprestimo();
                             break;
 
                         case '2':
@@ -37,10 +37,6 @@ namespace ClubeDaLeitura.ConsoleApp
                             break;
 
                         case '3':
-                            telaEmprestimo.ExcluirRegistro();
-                            break;
-
-                        case '4':
                             telaEmprestimo.CadastrarDevolucao();
                             break;
                     }

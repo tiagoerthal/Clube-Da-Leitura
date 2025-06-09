@@ -18,7 +18,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 
         public override void CadastrarRegistro()
         {
-            ExibirCabecalho();
+            Console.Clear();
+
             Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Cadastro de {nomeEntidade}");
             Console.WriteLine("------------------------------------------");
@@ -129,7 +130,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
                     continue;
 
                 if (
-                    caixaRegistrado.id != idSelecionado &&
+                    caixaRegistrado.Id != idSelecionado &&
                     (caixaRegistrado.Etiqueta == registroAtualizado.Etiqueta)
                    )
                 {
@@ -207,12 +208,14 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
             if (exibirCabecalho == true)
                 ExibirCabecalho();
 
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine("Visualização de Caixas");
+            Console.WriteLine("------------------------------------------");
 
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
+                "{0, -10} | {1, -20} | {2, -15} | {3, -15}",
                 "Id", "Eiqueta", "Cor", "Dias de empréstimo"
             );
 
@@ -226,12 +229,18 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
                     continue;
 
                 Console.WriteLine(
-                   "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                    C.id, C.Etiqueta, C.Cor, C.DiasEmprestimo
+                   "{0, -10} | {1, -20} | {2, -15} | {3, -15}",
+                    C.Id, C.Etiqueta, C.Cor, C.DiasEmprestimo
                 );
             }
 
+            Console.WriteLine();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
+ 
             Console.ReadLine();
+            Console.Clear();
         }
         protected override EntidadeBase ObterDados()
         {

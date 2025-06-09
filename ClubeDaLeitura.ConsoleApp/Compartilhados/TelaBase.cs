@@ -37,8 +37,9 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
         {
             Console.Clear();
             ExibirCabecalho();
-
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Cadastro de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
 
             Console.WriteLine();
 
@@ -78,8 +79,9 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
         public virtual void EditarRegistro()
         {
             ExibirCabecalho();
-
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Edição de {nomeEntidade}");
+            Console.WriteLine("------------------------------------------");
 
             Console.WriteLine();
 
@@ -87,6 +89,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 
             Console.Write("Digite o id do registro que deseja selecionar: ");
             int idSelecionado = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
 
             Console.WriteLine();
 
@@ -142,7 +145,6 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
             Console.WriteLine($"             Gestão de {nomeEntidade}s");
             Console.WriteLine("------------------------------------------");
 
-            Console.WriteLine();
         }
 
         protected abstract EntidadeBase ObterDados();

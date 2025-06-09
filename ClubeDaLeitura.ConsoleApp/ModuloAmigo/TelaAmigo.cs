@@ -16,7 +16,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
         }
         public override void CadastrarRegistro()
         {
-            ExibirCabecalho();
+            Console.Clear();
 
             Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Cadastro de {nomeEntidade}");
@@ -83,7 +83,10 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
         }
         public override void EditarRegistro()
         {
+            Console.Clear();
+
             ExibirCabecalho();
+
             Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Edição de {nomeEntidade}");
             Console.WriteLine("------------------------------------------");
@@ -92,10 +95,11 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 
             VisualizarRegistros(false);
 
+            Console.Clear();
+            Console.WriteLine();
+
             Console.Write("Digite o id do registro que deseja selecionar: ");
             int idSelecionado = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine();
 
             Amigo registroAtualizado = (Amigo)ObterDados();
 
@@ -127,7 +131,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
                     continue;
 
                 if (
-                    amigoRegistrado.id != idSelecionado &&
+                    amigoRegistrado.Id != idSelecionado &&
                     (amigoRegistrado.Nome == registroAtualizado.Nome ||
                     amigoRegistrado.Telefone == registroAtualizado.Telefone)
                 )
@@ -157,6 +161,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
             Console.Write("------------------------------------------");
             Console.WriteLine("\nDigite ENTER para continuar...");
             Console.Write("------------------------------------------");
+            Console.WriteLine();
+
             Console.ReadLine();
         }
         public override void ExcluirRegistro()
@@ -228,10 +234,14 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 
                 Console.WriteLine(
                    "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                    A.id, A.Nome, A.Responsavel, A.Telefone
+                    A.Id, A.Nome, A.Responsavel, A.Telefone
                 );
             }
 
+            Console.WriteLine();
+            Console.Write("------------------------------------------");
+            Console.WriteLine("\nDigite ENTER para continuar...");
+            Console.Write("------------------------------------------");
             Console.ReadLine();
         }      
 

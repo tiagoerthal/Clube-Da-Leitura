@@ -3,6 +3,10 @@
 
 ![](https://imgur.com/a/jFovSoN.gif)
 
+![](https://imgur.com/jFovSoN.gif)
+
+![](https://imgur.com/AC6YjHs.gif)
+
 ##  Funcionalidades
 ### Módulo de Amigos
 - **Cadastro:** Adição de novos amigos com validação para nome, responsável e telefone.

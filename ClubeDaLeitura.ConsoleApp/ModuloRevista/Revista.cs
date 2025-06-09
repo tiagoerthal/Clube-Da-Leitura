@@ -20,7 +20,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
            NumeroDeEdicao = numeroDeEdicao;
            AnoDePublicacao = anoDePublicacao;
            Caixa = caixa;
-            Status = "Disponível";
+           Status = "Disponível";
         }
 
         public override void AtualizarRegistro(EntidadeBase registroAtualizado)
@@ -38,6 +38,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
 
             if (string.IsNullOrWhiteSpace(Titulo))
                 erros += "O titulo é obrigatório!\n";
+
             else if (Titulo.Length < 2 || Titulo.Length > 101)
                 erros += "O titulo deve conter entre 2 e 100 caracteres!\n";
 

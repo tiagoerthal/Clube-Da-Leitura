@@ -7,8 +7,8 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
 {
     public abstract class RepositorioBase
     {
-        private EntidadeBase[] registros = new EntidadeBase[100];
-        private int contadorRegistros = 0;
+        protected EntidadeBase[] registros = new EntidadeBase[100];
+        protected int contadorRegistros = 0;
 
         public void CadastrarRegistro(EntidadeBase novoRegistro)
         {
@@ -36,7 +36,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
                 if (registros[i] == null)
                     continue;
 
-                else if (registros[i].id == idSelecionado)
+                else if (registros[i].Id == idSelecionado)
                 {
                     registros[i] = null;
 
@@ -61,7 +61,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhados
                 if (registro == null)
                     continue;
 
-                if (registro.id == idSelecionado)
+                if (registro.Id == idSelecionado)
                     return registro;
             }
 
