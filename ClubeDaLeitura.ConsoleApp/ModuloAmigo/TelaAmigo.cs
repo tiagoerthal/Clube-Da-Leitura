@@ -165,47 +165,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigos
 
             Console.ReadLine();
         }
-        public override void ExcluirRegistro()
-        {
-            ExibirCabecalho();
-            Console.WriteLine("------------------------------------------");
-            Console.WriteLine($"Exclusão de {nomeEntidade}");
-            Console.WriteLine("------------------------------------------");
-
-            Console.WriteLine();
-
-             VisualizarRegistros(false);
-
-            Console.Write("\nDigite o id do amigo que deseja excluir: ");
-            int idSelecionado = Convert.ToInt32(Console.ReadLine());
-
-            bool temEmprestimos = repositorioEmprestimo.ExisteEmprestimosVinculadas(idSelecionado);
-
-            if (temEmprestimos)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode ser excluído.");
-                Console.ResetColor();
-                Console.ReadLine();
-                return;
-            }
-
-            bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
-
-            if (conseguiuExcluir)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\nErro ao tentar excluir o {nomeEntidade}.");
-            }
-
-            Console.ResetColor();
-            Console.ReadLine();
-        }
+       
 
         public override void VisualizarRegistros(bool exibirCabecalho)
         {

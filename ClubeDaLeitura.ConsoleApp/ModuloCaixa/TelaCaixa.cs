@@ -84,124 +84,84 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
             Console.ReadLine();
         }
 
-        public override void EditarRegistro()
-        {
-            ExibirCabecalho();
-            Console.WriteLine("------------------------------------------");
-            Console.WriteLine($"Edição de {nomeEntidade}");
-            Console.WriteLine("------------------------------------------");
+        //public override void EditarRegistro()
+        //{
+        //    ExibirCabecalho();
+        //    Console.WriteLine("------------------------------------------");
+        //    Console.WriteLine($"Edição de {nomeEntidade}");
+        //    Console.WriteLine("------------------------------------------");
 
-            Console.WriteLine();
+        //    Console.WriteLine();
 
-            VisualizarRegistros(false);
+        //    VisualizarRegistros(false);
 
-            Console.Write("Digite o id do registro que deseja selecionar: ");
-            int idSelecionado = Convert.ToInt32(Console.ReadLine());
+        //    Console.Write("Digite o id do registro que deseja selecionar: ");
+        //    int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine();
+        //    Console.WriteLine();
 
-            Caixa registroAtualizado = (Caixa)ObterDados();
+        //    Caixa registroAtualizado = (Caixa)ObterDados();
 
-            string erros = registroAtualizado.Validar();
+        //    string erros = registroAtualizado.Validar();
 
-            if (erros.Length > 0)
-            {
-                Console.WriteLine();
+        //    if (erros.Length > 0)
+        //    {
+        //        Console.WriteLine();
 
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(erros);
-                Console.ResetColor();
+        //        Console.ForegroundColor = ConsoleColor.Red;
+        //        Console.WriteLine(erros);
+        //        Console.ResetColor();
 
-                Console.Write("\nDigite ENTER para continuar...");
-                Console.ReadLine();
+        //        Console.Write("\nDigite ENTER para continuar...");
+        //        Console.ReadLine();
 
-                EditarRegistro();
+        //        EditarRegistro();
 
-                return;
-            }
+        //        return;
+        //    }
 
-            EntidadeBase[] registros = repositorio.SelecionarRegistros();
+        //    EntidadeBase[] registros = repositorio.SelecionarRegistros();
 
-            for (int i = 0; i < registros.Length; i++)
-            {
-                Caixa caixaRegistrado = (Caixa)registros[i];
+        //    for (int i = 0; i < registros.Length; i++)
+        //    {
+        //        Caixa caixaRegistrado = (Caixa)registros[i];
 
-                if (caixaRegistrado == null)
-                    continue;
+        //        if (caixaRegistrado == null)
+        //            continue;
 
-                if (
-                    caixaRegistrado.Id != idSelecionado &&
-                    (caixaRegistrado.Etiqueta == registroAtualizado.Etiqueta)
-                   )
-                {
-                    Console.WriteLine();
+        //        if (
+        //            caixaRegistrado.Id != idSelecionado &&
+        //            (caixaRegistrado.Etiqueta == registroAtualizado.Etiqueta)
+        //           )
+        //        {
+        //            Console.WriteLine();
 
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Uma etiqueta com este nome já foi cadastrada!");
-                    Console.ResetColor();
+        //            Console.ForegroundColor = ConsoleColor.Red;
+        //            Console.WriteLine("Uma etiqueta com este nome já foi cadastrada!");
+        //            Console.ResetColor();
 
-                    Console.Write("\nDigite ENTER para continuar...");
-                    Console.ReadLine();
+        //            Console.Write("\nDigite ENTER para continuar...");
+        //            Console.ReadLine();
 
-                    EditarRegistro();
+        //            EditarRegistro();
 
-                    return;
-                }
-            }
+        //            return;
+        //        }
+        //    }
 
-            repositorio.EditarRegistro(idSelecionado, registroAtualizado);
+        //    repositorio.EditarRegistro(idSelecionado, registroAtualizado);
 
-            Console.Clear();
-            Console.Write("------------------------------------------");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
-            Console.ResetColor();
-            Console.Write("------------------------------------------");
-            Console.WriteLine("\nDigite ENTER para continuar...");
-            Console.Write("------------------------------------------");
-            Console.ReadLine();
-        }
-        public override void ExcluirRegistro()
-        {
-            ExibirCabecalho();
-            Console.WriteLine("------------------------------------------");
-            Console.WriteLine($"Exclusão de {nomeEntidade}");
-            Console.WriteLine("------------------------------------------");
-
-            Console.WriteLine();
-
-            VisualizarRegistros(false);
-
-            Console.Write("\nDigite o id da caixa que deseja excluir: ");
-            int idSelecionado = Convert.ToInt32(Console.ReadLine());
-
-            bool temVinculo = repositorioRevista.ExistemRevistasVinculadas(idSelecionado);
-
-            if (temVinculo)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nEsta Revista possui vinculos e não pode ser excluído.");
-                Console.ResetColor();
-                Console.ReadLine();
-                return;
-            }
-
-            bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
-
-            if (conseguiuExcluir)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\nErro ao tentar excluir o {nomeEntidade}.");
-            }
-
-            Console.ResetColor();
-            Console.ReadLine();
-        }
+        //    Console.Clear();
+        //    Console.Write("------------------------------------------");
+        //    Console.ForegroundColor = ConsoleColor.Green;
+        //    Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
+        //    Console.ResetColor();
+        //    Console.Write("------------------------------------------");
+        //    Console.WriteLine("\nDigite ENTER para continuar...");
+        //    Console.Write("------------------------------------------");
+        //    Console.ReadLine();
+        //}
+       
 
         public override void VisualizarRegistros(bool exibirCabecalho)
         {
