@@ -1,9 +1,7 @@
 
 # Clube Da Leitura
 
-
-
-![](https://imgur.com/AC6YjHs.gif)
+![](https://imgur.com/EE7Gujj.gif.gif)
 
 ##  Funcionalidades
 ### Módulo de Amigos
